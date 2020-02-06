@@ -11,6 +11,8 @@ import (
 // is a real-time clock which simply wraps the time package's functions. The
 // second is a mock clock which will only make forward progress when
 // programmatically adjusted.
+// (AB76) Declare Clock as an interface instead of a struct so that we can
+// create a mock that implements the interface.
 type Clock interface {
 	After(d time.Duration) <-chan time.Time
 	AfterFunc(d time.Duration, f func()) *Timer
